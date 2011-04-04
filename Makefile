@@ -23,7 +23,7 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
-all: jar $(TESTS)
+all: jar $(TESTS) maven_install
 # TODO(tsuna): Use automake to avoid relying on GNU make extensions.
 
 top_builddir = build
@@ -127,6 +127,9 @@ $(jar): $(top_builddir)/manifest $(top_builddir)/.javac-stamp $(classes)
 
 doc: $(top_builddir)/api/index.html
 
+maven_install: jar
+	mvn install:install-file -Dfile=build/asynchbase=$(spec_version) -DgroupId=$(package) -DartifactId=asynchbase -Dversion=$(spec_version) -Dpackaging=jar
+
 JDK_JAVADOC=http://download.oracle.com/javase/6/docs/api
 NETTY_JAVADOC=http://docs.jboss.org/netty/3.2/api
 SUASYNC_JAVADOC=http://tsunanet.net/~tsuna/async/api
@@ -152,4 +155,4 @@ distclean: clean
 	rm -rf $(top_builddir)/api
 	test ! -d $(top_builddir) || rmdir $(top_builddir)
 
-.PHONY: all jar clean distclean doc check
+.PHONY: all jar clean distclean doc check maven_install
