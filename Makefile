@@ -128,7 +128,7 @@ $(jar): $(top_builddir)/manifest $(top_builddir)/.javac-stamp $(classes)
 doc: $(top_builddir)/api/index.html
 
 maven_install: jar
-	mvn install:install-file -Dfile=build/asynchbase=$(spec_version) -DgroupId=$(package) -DartifactId=asynchbase -Dversion=$(spec_version) -Dpackaging=jar
+	mvn install:install-file -Dfile=build/asynchbase-$(spec_version) -DgroupId=$(package) -DartifactId=asynchbase -Dversion=$(spec_version) -Dpackaging=jar
 
 JDK_JAVADOC=http://download.oracle.com/javase/6/docs/api
 NETTY_JAVADOC=http://docs.jboss.org/netty/3.2/api
