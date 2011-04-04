@@ -67,15 +67,15 @@ hbaseasync_SOURCES = \
 hbaseasync_LIBADD = \
 	third_party/netty-3.2.2.Final.jar	\
 	third_party/slf4j-api-1.6.1.jar	\
-	third_party/zookeeper-3.3.1.jar	\
+	third_party/zookeeper-3.3.2.jar	\
 	third_party/suasync-1.0.jar	\
 
 test_SOURCES = src/Test.java
 test_LIBADD = \
 	$(hbaseasync_LIBADD) \
 	third_party/log4j-over-slf4j-1.6.1.jar	\
-	third_party/logback-classic-0.9.24.jar	\
-	third_party/logback-core-0.9.24.jar	\
+	third_party/logback-classic-0.9.28.jar	\
+	third_party/logback-core-0.9.28.jar	\
         $(jar)
 
 TESTS = $(top_builddir)/Test.class
